@@ -1,11 +1,11 @@
 # Import required libraries
+import os
 from dotenv import load_dotenv
 from itertools import zip_longest
-
 import streamlit as st
 from streamlit_chat import message
+from langchain_openai import AzureChatOpenAI
 
-from langchain.chat_models import ChatOpenAI
 from langchain.schema import (
     SystemMessage,
     HumanMessage,
@@ -16,8 +16,8 @@ from langchain.schema import (
 load_dotenv()
 
 # Set streamlit page configuration
-st.set_page_config(page_title="ChatBot Starter")
-st.title("ChatBot Starter")
+st.set_page_config(page_title="Dream 11 Chatbot")
+st.title("Dream 11 Chatbot")
 
 # Initialize session state variables
 if 'generated' not in st.session_state:
@@ -30,11 +30,11 @@ if 'entered_prompt' not in st.session_state:
     st.session_state['entered_prompt'] = ""  # Store the latest user input
 
 # Initialize the ChatOpenAI model
-chat = ChatOpenAI(
-    temperature=0.5,
-    model_name="gpt-3.5-turbo"
+chat = AzureChatOpenAI(
+    openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+    azure_deployment=os.getenv("AZURE_OPENAI_CHATGPT_DEPLOYMENT"),
+    verbose=True
 )
-
 
 def build_message_list():
     """
@@ -65,7 +65,6 @@ def generate_response():
 
     # Generate response using the chat model
     ai_response = chat(zipped_messages)
-
     return ai_response.content
 
 
@@ -75,10 +74,6 @@ def submit():
     st.session_state.entered_prompt = st.session_state.prompt_input
     # Clear prompt_input
     st.session_state.prompt_input = ""
-
-
-# Create a text input for user
-st.text_input('YOU: ', key='prompt_input', on_change=submit)
 
 
 if st.session_state.entered_prompt != "":
@@ -96,15 +91,15 @@ if st.session_state.entered_prompt != "":
 
 # Display the chat history
 if st.session_state['generated']:
-    for i in range(len(st.session_state['generated'])-1, -1, -1):
-        # Display AI response
-        message(st.session_state["generated"][i], key=str(i))
+#    for i in range(len(st.session_state['generated'])-1, -1, -1):
+    for i in range(len(st.session_state['generated'])):
         # Display user message
         message(st.session_state['past'][i],
                 is_user=True, key=str(i) + '_user')
+        # Display AI response
+        message(st.session_state["generated"][i], key=str(i))
+        
+# Create a text input for user
+st.text_input('YOU: ', key='prompt_input', on_change=submit)
 
 
-# Add credit
-st.markdown("""
----
-Made with 🤖 by [Austin Johnson](https://github.com/AustonianAI)""")
