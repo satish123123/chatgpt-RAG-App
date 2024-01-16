@@ -1,6 +1,6 @@
-streamlit
-streamlit-chat
-python-dotenv
-langchain
-openai
-pyodbc
+streamlit==1.29.0
+streamlit-chat==0.1.1
+python-dotenv==1.0.0
+langchain==0.1.0
+openai==1.7.1
+pyodbc==5.0.1
