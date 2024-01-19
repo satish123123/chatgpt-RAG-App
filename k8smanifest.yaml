@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dream11cb-deployment
+  name: travelbot-deployment
   labels:
-    app: dream11cb
+    app: travelbot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dream11cb
+      app: travelbot
   template:
     metadata:
       labels:
-        app: dream11cb
+        app: travelbot
     spec:
       containers:
-      - name: dream11cb
-        image: lodacr.azurecr.io/dream11cb:v1
+      - name: travelbot
+        image: lodacr.azurecr.io/travelbot:v1
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: dream11cb-service
+  name: travelbot-service
 spec:
   type: LoadBalancer
   selector:
-    app: dream11cb
+    app: travelbot
   ports:
     - protocol: TCP
       port: 80

@@ -35,8 +35,10 @@ else:
     tables = st.session_state['tables']
 
 # Set streamlit page configuration
-st.set_page_config(page_title="Dream 11 Chatbot")
-st.title("Dream 11 Chatbot - FunctionCalling")
+# st.set_page_config(page_title="Dream 11 Chatbot")
+# st.title("Dream 11 Chatbot - FunctionCalling")
+st.set_page_config(page_title="Travelbot")
+st.title("Travelbot")
 
 # Initialize session state variables
 if 'entered_prompt' not in st.session_state:
@@ -59,9 +61,10 @@ prompt = ChatPromptTemplate(
     messages=[
         SystemMessage(content=(
             "You are an AI that has access to a SQL Server database. Generate T-SQL statements to be executed on Microsoft SQL Server.\n"
-            "Whenever there is any question related to cricket, please refer to the SQL Server database only. Strictly do not refer to your knowledge base.\n"
-            "Fuzzy lookup the player name, try to identify abbreviations used for player names, try to identify the stadium names (venue names) if city is provided.\n"
-            "When evaluating performance of a batter or a bowler, please consider the maximum.\n"
+ #           "Whenever there is any question related to cricket, please refer to the SQL Server database only. Strictly do not refer to your knowledge base.\n"
+ #           "Fuzzy lookup the player name, try to identify abbreviations used for player names, try to identify the stadium names (venue names) if city is provided.\n"
+ #           "When evaluating performance of a batter or a bowler, please consider the maximum.\n"
+            "Whenever there is any question related to travel or vacation, please refer to the SQL Server database only. Strictly do not refer to your knowledge base.\n"
             f"The SQL Server database has these tables - {tables}\n"
             "As a first step, please always use the 'describe_table' function to know the columns of any table for faster results. Slower results are not appreciated."
             "Do not make any assumptions about what column names in a particular table. "            

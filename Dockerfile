@@ -1,6 +1,6 @@
 FROM ubuntu:latest
-RUN apt update -y  &&  apt upgrade -y && apt-get update 
-RUN apt install -y python3.10 python3-pip unixodbc-dev
+RUN apt-get update -y  &&  apt-get upgrade -y && apt-get update --fix-missing
+RUN apt-get install -y python3.10 python3-pip unixodbc-dev
 RUN apt-get install -y curl apt-transport-https
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
