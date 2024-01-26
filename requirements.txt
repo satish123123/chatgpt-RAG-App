@@ -6,3 +6,5 @@ openai==1.7.1
 pyodbc==5.0.1
 langchain_openai==0.0.2
 pydantic==2.5.3
+azure-search-documents==11.4.0b8
+azure-identity==1.15.0

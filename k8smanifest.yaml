@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: travelbot-deployment
+  name: chatrag-deployment
   labels:
-    app: travelbot
+    app: chatrag
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: travelbot
+      app: chatrag
   template:
     metadata:
       labels:
-        app: travelbot
+        app: chatrag
     spec:
       containers:
-      - name: travelbot
-        image: lodacr.azurecr.io/travelbot:v1
+      - name: chatrag
+        image: lodacr.azurecr.io/chatrag:v1
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: travelbot-service
+  name: chatrag-service
 spec:
   type: LoadBalancer
   selector:
-    app: travelbot
+    app: chatrag
   ports:
     - protocol: TCP
       port: 80
