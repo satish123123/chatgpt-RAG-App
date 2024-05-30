@@ -1,10 +1,10 @@
 streamlit==1.29.0
 streamlit-chat==0.1.1
 python-dotenv==1.0.0
-langchain==0.1.0
+langchain==0.1.8
 openai==1.7.1
 pyodbc==5.0.1
-langchain_openai==0.0.2
+langchain_openai==0.0.3
 pydantic==2.5.3
-azure-search-documents==11.4.0b8
+azure-search-documents==11.4.0
 azure-identity==1.15.0

@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.vectorstores.azuresearch import AzureSearch
 from azure.search.documents.indexes.models import (
-    SemanticSettings,
+    SemanticSearch,
     SemanticConfiguration,
-    PrioritizedFields,
+    SemanticPrioritizedFields,
     SemanticField
 )
 from langchain_community.document_loaders import TextLoader
@@ -18,7 +18,7 @@ openai.api_type: str = "azure"
 openai.api_key = os.getenv("AZURE_OPENAI_API_KEY")  
 openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")  
 openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")  
-model: str = "sauada002"
+model: str = "ragdemo002"
 
 vector_store_address: str = os.getenv("AZURE_SEARCH_SERVICE_ENDPOINT")  
 vector_store_password: str = os.getenv("AZURE_SEARCH_ADMIN_KEY") 
@@ -32,12 +32,12 @@ vector_store: AzureSearch = AzureSearch(
     index_name=index_name,
     embedding_function=embeddings.embed_query,
     semantic_configuration_name='config',
-        semantic_settings=SemanticSettings(
+        semantic_search=SemanticSearch(
             default_configuration='config',
             configurations=[
                 SemanticConfiguration(
                     name='config',
-                    prioritized_fields=PrioritizedFields(
+                    prioritized_fields=SemanticPrioritizedFields(
                         title_field=SemanticField(field_name='content'),
                         prioritized_content_fields=[SemanticField(field_name='content')],
                         prioritized_keywords_fields=[SemanticField(field_name='metadata')]
