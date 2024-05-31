@@ -18,8 +18,8 @@ from rag_query_helper import similarity_search
 load_dotenv()
 
 # Set streamlit page configuration
-st.set_page_config(page_title="Osama AI + Langchain - RAG")
-st.title("Osama AI App + Langchain - RAG")
+st.set_page_config(page_title="Demo AI + Langchain - RAG")
+st.title("Demo AI App + Langchain - RAG")
 
 # Initialize session state variables
 if 'generated' not in st.session_state:
