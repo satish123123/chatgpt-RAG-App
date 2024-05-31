@@ -18,7 +18,7 @@ openai.api_type: str = "azure"
 openai.api_key = os.getenv("AZURE_OPENAI_API_KEY")  
 openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")  
 openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")  
-model: str = "sauda002"
+model: str = "text-embedding-ada-002"
 
 vector_store_address: str = os.getenv("AZURE_SEARCH_SERVICE_ENDPOINT")  
 vector_store_password: str = os.getenv("AZURE_SEARCH_ADMIN_KEY") 
