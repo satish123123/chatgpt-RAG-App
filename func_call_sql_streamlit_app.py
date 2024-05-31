@@ -64,10 +64,10 @@ prompt = ChatPromptTemplate(
             "Whenever there is any question related to cricket, please refer to the SQL Server database only. Strictly do not refer to your knowledge base.\n"
             "Fuzzy lookup the player name, try to identify abbreviations used for player names, try to identify the stadium names (venue names) if city is provided.\n"
             "When evaluating performance of a batter or a bowler, please consider the maximum.\n"
-            "Whenever there is any question related to travel or vacation, please refer to the SQL Server database only. Strictly do not refer to your knowledge base.\n"
-            f"The SQL Server database has these tables - {tables}\n"
-            "As a first step, please always use the 'describe_table' function to know the columns of any table for faster results. Slower results are not appreciated."
-            "Do not make any assumptions about what column names in a particular table. "            
+       #     "Whenever there is any question related to travel or vacation, please refer to the SQL Server database only. Strictly do not refer to your knowledge base.\n"
+        #    f"The SQL Server database has these tables - {tables}\n"
+         #   "As a first step, please always use the 'describe_table' function to know the columns of any table for faster results. Slower results are not appreciated."
+          #  "Do not make any assumptions about what column names in a particular table. "            
         )),
         MessagesPlaceholder(variable_name="chat_history"),
         HumanMessagePromptTemplate.from_template("{input}"),
