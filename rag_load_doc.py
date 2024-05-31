@@ -49,7 +49,17 @@ vector_store: AzureSearch = AzureSearch(
 loader = TextLoader("fantasy_story.txt", encoding="utf-8")
 
 documents = loader.load()
+
+# Check if documents are loaded
+assert documents, "Documents failed to load"
+print(f"Loaded {len(documents)} documents")
+
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 docs = text_splitter.split_documents(documents)
 
 vector_store.add_documents(documents=docs)
+
+# Check if documents are added to vector store
+search_results = vector_store.similarity_search("what is a name of friendly sea turtle", k=1)
+assert search_results, "Documents failed to add to vector store"
+print(f"Documents successfully added to vector store, retrieved {len(search_results)} documents for test query")
