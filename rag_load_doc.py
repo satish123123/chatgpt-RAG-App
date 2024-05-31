@@ -46,7 +46,7 @@ vector_store: AzureSearch = AzureSearch(
 )
     
 
-loader = TextLoader("state_of_the_union.txt", encoding="utf-8")
+loader = TextLoader("fantasy_story.txt", encoding="utf-8")
 
 documents = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
