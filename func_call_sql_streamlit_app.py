@@ -23,7 +23,7 @@ from langchain.prompts import (
 
 from langchain.memory import ConversationBufferMemory
 
-from tools.sql import run_sql_query_tool, describe_table_tool, fetch_tables
+from .tools.sql import run_sql_query_tool, describe_table_tool, fetch_tables
 
 # Load environment variables
 load_dotenv()
